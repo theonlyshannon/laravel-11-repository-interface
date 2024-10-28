@@ -14,7 +14,6 @@ use App\Http\Controllers\Web\Admin\DashboardController;
 |
 */
 
-
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+Route::middleware('auth', 'role:admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
