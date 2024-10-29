@@ -39,9 +39,6 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
     use App\Http\Middleware\ValidateSignature;
     use Illuminate\Routing\Middleware\ThrottleRequests;
     use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
-    use Spatie\Permission\Middlewares\RoleMiddleware;
-    use Spatie\Permission\Middlewares\PermissionMiddleware;
-    use Spatie\Permission\Middlewares\RoleOrPermissionMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -106,8 +103,8 @@ class Kernel extends HttpKernel
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
-        'role' => RoleMiddleware::class,
-        'permission' => PermissionMiddleware::class,
-        'role_or_permission' => RoleOrPermissionMiddleware::class,
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
     ];
 }
