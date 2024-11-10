@@ -1,4 +1,4 @@
-<x-layout.auth title="login">
+<x-layout.auth title="Login">
 
     <div class="flex text-center items-center justify-center min-h-screen">
         <div class="left xl:w-5/12 xl:px-32 lg:px-32 px-10 items-center justify-center text-center">
@@ -10,15 +10,16 @@
                 <p>Hallo! EduSphere Teman Belajarmu untuk Masa Depan.</p>
             </div>
 
-            <form class="space-y-5 items-center mt-10">
+            <form action="{{ route('login.store') }}" method="POST" class="space-y-5 items-center mt-10">
+                @csrf
                 <div class="group-input">
-                    <label for="simple-search" class="sr-only">Email</label>
+                    <label for="email" class="sr-only">Email</label>
                     <div class="relative w-full">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <i class="ri-mail-fill text-xl text-gray-600"></i>
                         </div>
-                        <input type="text" id="simple-search"
-                            class="py-4 bg-gray-50 border border-gray-300 text-black text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-white dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        <input type="email" id="email" name="email"
+                            class="py-4 bg-gray-50 border border-gray-300 text-black text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-white dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Email" required />
                     </div>
                 </div>
@@ -28,8 +29,8 @@
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <i class="ri-git-repository-private-fill text-xl text-gray-600"></i>
                         </div>
-                        <input type="password" id="password"
-                            class="py-4 bg-gray-50 border border-gray-300 text-black text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-white dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        <input type="password" id="password" name="password"
+                            class="py-4 bg-gray-50 border border-gray-300 text-black text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-white dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Password" required />
                         <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3"
                             onclick="togglePassword('password')">
@@ -39,13 +40,13 @@
                 </div>
                 <div class="group-input flex justify-between">
                     <div class="option flex items-center space-x-2 mb-2">
-                        <input type="checkbox" id="option1" name="description"
+                        <input type="checkbox" id="option1" name="remember"
                             class="checkbox w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
                         <label for="option1" class="text-base text-gray-600">Remember me</label>
                     </div>
                     <a href="#" class="text-[#085cd7] font-medium">Forgot Password?</a>
                 </div>
-                <button class="mt-5 w-full bg-[#4a28c4] text-white py-4 rounded-xl text-lg">Log In</button>
+                <button type="submit" class="mt-5 w-full bg-[#4a28c4] text-white py-4 rounded-xl text-lg">Log In</button>
             </form>
             <div class="flex text-center items-center justify-center mt-5 gap-1">
                 <p class="font-medium text-gray-600">Tidak memiliki akun?</p>
@@ -83,7 +84,7 @@
                     </div>
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <div class="images justify-center items-center text-center flex">
-                            <img src="./images/login/image-slider.png" class=" w-[550px] h-auto" alt="...">
+                            <img src="{{ asset('auth/images/login/image-slider.png') }}" class=" w-[550px] h-auto" alt="...">
                         </div>
                         <div class="text space-y-3 mt-16">
                             <h1 class="text-white text-2xl font-semibold">Connect with every application.</h1>
